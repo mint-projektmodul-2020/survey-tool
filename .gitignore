@@ -2,8 +2,7 @@
 # Custom Stuff
 /venv
 .idea
-
-
+secrets.py
 
 
 
