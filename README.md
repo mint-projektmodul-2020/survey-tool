@@ -1,5 +1,5 @@
 
-#### MINT Projektmodul 2020 - Survey
+## MINT Projektmodul 2020 - Survey
 
 This project contains a **survey for the Arduino kits** used in our
 Lecture.
