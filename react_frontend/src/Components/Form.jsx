@@ -121,12 +121,23 @@ function Form(props) {
 				</Grid>
 				<Grid item xs={12}>
 					<div className={classes.flexBoxRow}>
-						<Button variant="contained" onClick={props.handleReset} disableElevation>
-							Zurücksetzen
-						</Button>
-						<Button variant="contained" color="primary" onClick={props.handleSubmit} disableElevation>
-							Kit Reservieren
-						</Button>
+						<div className={classes.button}>
+							<Button
+								variant="contained"
+								onClick={props.handleReset}
+								disableElevation>
+								Zurücksetzen
+							</Button>
+						</div>
+						<div className={classes.button}>
+							<Button
+								variant="contained"
+								color="primary"
+								onClick={props.handleSubmit}
+								disableElevation>
+								Kit Reservieren
+							</Button>
+						</div>
 					</div>
 				</Grid>
 			</Grid>
