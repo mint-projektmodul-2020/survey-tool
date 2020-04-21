@@ -11,6 +11,8 @@ flask = "*"
 flask-cors = "*"
 certifi = "*"
 sendgrid = "*"
+dnspython = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.8"
