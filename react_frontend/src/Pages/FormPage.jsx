@@ -1,12 +1,9 @@
 import React, {useState} from 'react';
-import useStyles from "../styles";
 import Form from "../Components/Form";
 import Cookies from 'js-cookie';
 
 
 function FormPage() {
-
-	const classes = useStyles();
 
 	let initialState = {
 		country: "Deutschland",

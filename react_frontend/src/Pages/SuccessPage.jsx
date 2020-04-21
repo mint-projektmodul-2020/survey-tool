@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import useStyles from "../styles";
 import Cookies from "js-cookie";
 import Typography from "@material-ui/core/Typography";

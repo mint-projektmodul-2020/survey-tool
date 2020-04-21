@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import useStyles from "../styles";
 import {CustomTextField} from "./CustomTextField";
 import Grid from "@material-ui/core/Grid";
@@ -6,7 +6,6 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Collapse from "@material-ui/core/Collapse";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
-import {Link} from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Cookies from "js-cookie";
 
