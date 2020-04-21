@@ -9,8 +9,8 @@ const useStyles = makeStyles(theme => ({
 		justifyContent: "center",
 	},
 	main: {
-		marginTop: theme.spacing(6),
-		marginBottom: theme.spacing(6),
+		marginTop: 72,
+		marginBottom: 72,
 		width: "100%",
 	},
 	formField: {
@@ -32,6 +32,7 @@ const useStyles = makeStyles(theme => ({
 	},
 	titleTextBox1: {
 		marginBottom: theme.spacing(5),
+		textAlign: "center",
 	},
 	titleTextBox2: {
 		marginBottom: theme.spacing(5),
@@ -49,6 +50,17 @@ const useStyles = makeStyles(theme => ({
 	button: {
 		marginLeft: theme.spacing(1),
 		marginRight: theme.spacing(1),
+	},
+	cornerLogoBox: {
+		position: "absolute",
+		top: 16,
+		left: 16,
+		height: 40,
+		zIndex: "1000",
+	},
+	cornerLogo: {
+		maxHeight: "100%",
+		zIndex: "1000",
 	},
 }))
 

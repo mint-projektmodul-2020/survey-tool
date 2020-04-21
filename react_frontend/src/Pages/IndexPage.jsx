@@ -16,7 +16,6 @@ function IndexPage() {
 	return (
 		<React.Fragment>
 			<div className={clsx(classes.flexBoxRow, classes.logoBox)}>
-				<img src={MSELogo} alt="MSE Logo" className={classes.logoBoxLogo}/>
 				<img src={ArduinoImage} alt="Arduino Uni" className={classes.logoBoxLogo}/>
 			</div>
 
