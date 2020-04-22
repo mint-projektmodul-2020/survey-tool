@@ -12,6 +12,9 @@ def submit(form_dict):
     if any([(key not in form_dict) for key in (all_keys + ['remote'])]):
         return status('server error: key missing', status_code=500)
 
+    if any([(type(form_dict[key]) != str) for key in all_keys]) or (type(form_dict["remote"]) != bool):
+        return status('server error: key invalid', status_code=500)
+
     if '' in (form_dict[key] for key in ('name', 'email')):
         return status('validation error: name/email missing', status_code=400)
 
