@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import Form from "../Components/Form";
 import Cookies from 'js-cookie';
 
+import axios from 'axios';
+
 
 function FormPage() {
 
@@ -28,10 +30,13 @@ function FormPage() {
 			Cookies.set('form-' + key, formValues[key], {expires: 1});
 		})
 
-		setTimeout(() => {
-			window.open("/verify", "_self");
-			}, 500
-		)
+		axios.post("http://localhost:5000/backend/submit", formValues)
+			.then((response) => {
+				window.open("/verify", "_self");
+			})
+			.catch((response) => {
+				console.log(response);
+			})
 	}
 
 	function reset() {
