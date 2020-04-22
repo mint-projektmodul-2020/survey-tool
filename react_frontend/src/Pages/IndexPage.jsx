@@ -1,7 +1,6 @@
 import React from 'react';
 import useStyles from "../styles";
 import clsx from "clsx";
-import MSELogo from "../Components/assets/MSELogo.png";
 import ArduinoImage from "../Components/assets/ArduinoUno.png";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
@@ -16,7 +15,7 @@ function IndexPage() {
 	return (
 		<React.Fragment>
 			<div className={clsx(classes.flexBoxRow, classes.logoBox)}>
-				<img src={ArduinoImage} alt="Arduino Uni" className={classes.logoBoxLogo}/>
+				<img src={ArduinoImage} alt="Arduino Uno" className={classes.logoBoxLogo}/>
 			</div>
 
 			<div className={classes.titleTextBox1}>
