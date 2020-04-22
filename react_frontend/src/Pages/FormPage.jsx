@@ -4,19 +4,27 @@ import Cookies from 'js-cookie';
 
 import axios from 'axios';
 import MessageSnackbar from "../Components/MessageSnackbar";
+import queryString from 'query-string'
 
 
 function FormPage() {
 
+	const values = queryString.parse(window.location.search);
 	let initialState = {};
 	const keys = ["name", "email", "remote"];
 
 	keys.forEach((key) => {
-		let cookieValue = Cookies.get("form-" + key);
-		if (cookieValue === undefined) {
-			initialState[key] = (key !== "remote") ? "" : false;
+		if (key in values) {
+			let value = (key !== "remote") ? values[key].replace("+", " ") : (values[key] === "true")
+			Cookies.set("form-" + key, value, {expires: 1});
+			initialState[key] = value;
 		} else {
-			initialState[key] = (key !== "remote") ? cookieValue : (cookieValue === "true");
+			let cookieValue = Cookies.get("form-" + key);
+			if (cookieValue === undefined) {
+				initialState[key] = (key !== "remote") ? "" : false;
+			} else {
+				initialState[key] = (key !== "remote") ? cookieValue : (cookieValue === "true");
+			}
 		}
 	})
 

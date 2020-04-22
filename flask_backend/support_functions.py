@@ -43,7 +43,8 @@ def send_email(entry):
     adress_data = f'{entry["name"]} <em>(Ich wohne {"<strong>nicht</strong>" if entry["remote"] else ""} in München)</em>'
 
     verification_url = f'{BACKEND_URL}backend/verify/{entry["verification_token"]}'
-    change_url = f'{BACKEND_URL}form'  # ?name={entry["name"]}&email={entry["email"]}&remote={"true" if entry["remote"] else "false"}
+    change_url = f'{BACKEND_URL}form?name={entry["name"]}&email={entry["email"]}' \
+                 f'&remote={"true" if entry["remote"] else "false"}'
     message = Mail(
         from_email='mint-projektmodul-2020@tum.de',
         to_emails=entry["email"],
