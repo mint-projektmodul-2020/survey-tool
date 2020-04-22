@@ -43,7 +43,7 @@ def send_email(entry):
     if not entry["remote"]:
         adress_data = f'{entry["name"]} <em>(Ich wohne in München)</em>'
     else:
-        adress_data = f'{entry["name"]} <em>(Ich wohne nicht in München)</em>:<br/>"' +\
+        adress_data = f'{entry["name"]} <em>(Ich wohne nicht in München)</em>:<br/>' +\
                       f'{entry["street"]}<br/>{entry["zip_code"]} {entry["city"]}<br/>{entry["country"]}'
 
     verification_url = f'{BACKEND_URL}/backend/verify/{entry["verification_token"]}'

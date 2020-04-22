@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/react/static/css/main.e9b3afb7.chunk.css",
+    "main.js": "/static/react/static/js/main.34796154.chunk.js",
+    "main.js.map": "/static/react/static/js/main.34796154.chunk.js.map",
+    "runtime-main.js": "/static/react/static/js/runtime-main.f4d8ae14.js",
+    "runtime-main.js.map": "/static/react/static/js/runtime-main.f4d8ae14.js.map",
+    "static/js/2.5b34d00d.chunk.js": "/static/react/static/js/2.5b34d00d.chunk.js",
+    "static/js/2.5b34d00d.chunk.js.map": "/static/react/static/js/2.5b34d00d.chunk.js.map",
+    "../../templates/index.html": "/static/react/../../templates/index.html",
+    "precache-manifest.55f56e948311ff4d85440c63efd7f5a0.js": "/static/react/precache-manifest.55f56e948311ff4d85440c63efd7f5a0.js",
+    "service-worker.js": "/static/react/service-worker.js",
+    "static/css/main.e9b3afb7.chunk.css.map": "/static/react/static/css/main.e9b3afb7.chunk.css.map",
+    "static/js/2.5b34d00d.chunk.js.LICENSE.txt": "/static/react/static/js/2.5b34d00d.chunk.js.LICENSE.txt",
+    "static/media/ArduinoUno.png": "/static/react/static/media/ArduinoUno.b7cddf8a.png",
+    "static/media/Drawing_404.png": "/static/react/static/media/Drawing_404.8da1774c.png",
+    "static/media/MSELogo.png": "/static/react/static/media/MSELogo.e3d90977.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f4d8ae14.js",
+    "static/js/2.5b34d00d.chunk.js",
+    "static/css/main.e9b3afb7.chunk.css",
+    "static/js/main.34796154.chunk.js"
+  ]
+}

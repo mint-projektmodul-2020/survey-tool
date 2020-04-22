@@ -45,7 +45,7 @@ function FormPage() {
 			Cookies.set('form-' + key, formValues[key], {expires: 1});
 		})
 
-		axios.post("http://localhost:5000/backend/submit", formValues)
+		axios.post("/backend/submit", formValues)
 			.then(() => {
 				setSubmitting(false);
 				window.open("/verify", "_self");

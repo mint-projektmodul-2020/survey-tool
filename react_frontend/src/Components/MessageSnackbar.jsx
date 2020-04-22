@@ -58,7 +58,7 @@ function MessageSnackbar(props) {
                 message={<span id="message-id">{text}</span>}
                 action={(
                     <IconButton onClick={props.closeMessage}>
-                        <CloseIcon className={classes.snackbarIcon}/>
+                        <CloseIcon className={classes.snackbarIcon} style={{fill: "white", color: "white"}}/>
                     </IconButton>
                 )}
             />
