@@ -6,8 +6,10 @@ import axios from 'axios';
 import MessageSnackbar from "../Components/MessageSnackbar";
 import queryString from 'query-string'
 
+import {withRouter} from 'react-router-dom'
 
-function FormPage() {
+
+function FormPage(props) {
 
 	const values = queryString.parse(window.location.search);
 	let initialState = {};
@@ -53,8 +55,8 @@ function FormPage() {
 
 		axios.post("/backend/submit", formValues)
 			.then(() => {
+				props.history.push('/verify');
 				setSubmitting(false);
-				window.open("/verify", "_self");
 			})
 			.catch((error) => {
 				setTimeout(() => {
@@ -100,4 +102,4 @@ function FormPage() {
 
 }
 
-export default FormPage;
+export default withRouter(FormPage);

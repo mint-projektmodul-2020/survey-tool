@@ -26,8 +26,8 @@ function SuccessPage() {
 			<div className={classes.textBox3}>
 				<Typography variant="subtitle1">
 					<React.Fragment>
-						Falls du <strong>deine Daten ändern möchtest</strong>, fülle einfach nochmal das Formular aus
-						und bestätige die Daten mit der neuen Verifikations-Mail.
+						Falls du <strong>deine Daten ändern möchtest</strong>, fülle einfach nochmal
+						das Formular aus und bestätige die Daten mit der neuen Verifikations-Mail.
 						<br/><br/>
 						Für eine weitere Person Reservieren?
 					</React.Fragment>

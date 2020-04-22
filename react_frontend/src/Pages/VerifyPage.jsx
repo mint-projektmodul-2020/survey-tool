@@ -23,13 +23,13 @@ function VerifyPage() {
 				<Typography variant="subtitle1">
 					{([undefined, ""].includes(cookieEmail)) && (
 						<React.Fragment>
-							Mail Adresse nochmal ändern?
+							Email Adresse nochmal ändern?
 						</React.Fragment>
 					)}
 
 					{(![undefined, ""].includes(cookieEmail)) && (
 						<React.Fragment>
-							<strong>{cookieEmail}</strong> ist nicht deine Mail Adresse?
+							<strong>{cookieEmail}</strong> ist nicht deine Email Adresse?
 						</React.Fragment>
 					)}
 				</Typography>

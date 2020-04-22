@@ -26,7 +26,10 @@ function IndexPage() {
 			<Container maxWidth="xs">
 				<div className={classes.titleTextBox2}>
 					<Typography variant="subtitle1">
-						Möchtest du am MINT Projektmodul 2020 <strong>teilnehmen?</strong>
+						Um im vollen Umfang an dieser Veranstaltung teilnehmen zu können,
+						stellen wir jedem Teilnehmer ein <strong>Arduino Kit</strong> zur
+						Verfügung, welches <strong>alle Bauteile</strong> enthält, die wir
+						in den Aufgaben verwenden.
 
 						<br/><br/>
 

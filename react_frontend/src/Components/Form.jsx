@@ -56,7 +56,7 @@ function Form(props) {
 									variant="contained"
 									onClick={props.handleReset}
 									disableElevation>
-									Öffne campus.tum.de
+									campus.tum.de öffnen
 								</Button>
 							</a>
 						</div>
