@@ -40,23 +40,19 @@ def send_email(entry):
 
     adress_data = ""
 
-    if not entry["remote"]:
-        adress_data = f'{entry["name"]} <em>(Ich wohne in München)</em>'
-    else:
-        adress_data = f'{entry["name"]} <em>(Ich wohne nicht in München)</em>:<br/>' +\
-                      f'{entry["street"]}<br/>{entry["zip_code"]} {entry["city"]}<br/>{entry["country"]}'
+    adress_data = f'{entry["name"]} <em>(Ich wohne {"<strong>nicht</strong>" if entry["remote"] else ""} in München)</em>'
 
-    verification_url = f'{BACKEND_URL}/backend/verify/{entry["verification_token"]}'
-    change_url = f'{BACKEND_URL}/form'
+    verification_url = f'{BACKEND_URL}backend/verify/{entry["verification_token"]}'
+    change_url = f'{BACKEND_URL}form'  # ?name={entry["name"]}&email={entry["email"]}&remote={"true" if entry["remote"] else "false"}
     message = Mail(
         from_email='mint-projektmodul-2020@tum.de',
         to_emails=entry["email"],
         subject='MINT Projektmodul: Bestätige deine Email Adresse',
         html_content=f'<h2>Willkommen beim MINT Projektmodul</h2>' +
                      f'<p>Wir haben folgende Daten von dir erhalten:</p>' +
-                     f'<p>{adress_data}</p>' +
+                     f'<p>{adress_data}</p><br/>' +
                      f'<p>Diese Daten <strong>bestätigen</strong>: <a href=\'{verification_url}\'>Bestätigungs-Link</a></p>' +
-                     f'<p>Diese Daten <strong>ändern</strong>: <a href=\'{change_url}\'>Änderungs-Link</a></p>' +
+                     f'<p>Diese Daten <strong>ändern</strong>: <a href=\'{change_url}\'>Änderungs-Link</a></p><br/>' +
                      f'<p>Falls du diese Mail nicht erwartet hast, dann kannst du sie einfach ignorieren</p>' +
                      f'<p>Beste Grüße,<br/>Dein MINT-Team</p>'
     )

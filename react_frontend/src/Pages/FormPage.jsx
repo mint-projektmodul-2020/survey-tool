@@ -8,10 +8,8 @@ import MessageSnackbar from "../Components/MessageSnackbar";
 
 function FormPage() {
 
-	let initialState = {
-		country: "Deutschland",
-	};
-	const keys = ["name", "email", "remote", "street", "zip_code", "city"];
+	let initialState = {};
+	const keys = ["name", "email", "remote"];
 
 	keys.forEach((key) => {
 		let cookieValue = Cookies.get("form-" + key);
@@ -65,19 +63,13 @@ function FormPage() {
 		console.log("Reset");
 
 		keys.forEach((key) => {
-			if (key !== "remote") {
-				Cookies.remove('form-' + key);
-			}
+			Cookies.remove('form-' + key);
 		})
 
 		setFormValues({
 			name: "",
 			email: "",
-			remote: formValues.remote,
-			street: "",
-			zip_code: "",
-			city: "",
-			country: "Deutschland"
+			remote: false,
 		})
 	}
 

@@ -3,12 +3,12 @@ import useStyles from "../styles";
 import {CustomTextField} from "./CustomTextField";
 import Grid from "@material-ui/core/Grid";
 import Checkbox from "@material-ui/core/Checkbox";
-import Collapse from "@material-ui/core/Collapse";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Cookies from "js-cookie";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Container from "@material-ui/core/Container";
 
 
 function Form(props) {
@@ -19,7 +19,7 @@ function Form(props) {
 
 		// Deepcopy object without a library
 		let newState = {};
-		const keys = ["name", "email", "remote", "street", "zip_code", "city", "country"];
+		const keys = ["name", "email", "remote"];
 
 		keys.forEach((key) => {
 			if (key in newValue) {
@@ -39,6 +39,34 @@ function Form(props) {
 	return (
 		<React.Fragment>
 			<Grid container justitfy="center" spacing={2}>
+				<Grid item xs={12} className={classes.textBox3}>
+					<Typography variant="subtitle1">
+						Bitte überprüfe in jedem Fall, ob in TUMOnline <br/>
+						deine aktuelle Wohnadresse eingetragen ist:
+						<br/>
+						<strong>Ressourcen > Korrespondenzadresse (Studienadresse)</strong>
+					</Typography>
+				</Grid>
+				<Grid item xs={12}>
+					<div className={classes.flexBoxRow}>
+						<div className={classes.button}>
+							<a href="https://campus.tum.de/" target="_blank">
+								<Button
+									disabled={props.submitting}
+									variant="contained"
+									onClick={props.handleReset}
+									disableElevation>
+									Öffne campus.tum.de
+								</Button>
+							</a>
+						</div>
+					</div>
+				</Grid>
+
+				<Grid item xs={12}>
+					<div className={classes.divider3}/>
+				</Grid>
+
 				<Grid item xs={12}>
 					<CustomTextField
 						disabled={props.submitting}
@@ -70,76 +98,13 @@ function Form(props) {
 							onChange={() => handleFormChange({remote: !props.formValues.remote})}
 						/>
 						<Typography variant="subtitle1" className={props.submitting ? classes.disabledText : ""}>
-							Ich lebe <strong>nicht</strong> in München
+							Ich kann das Arduino Kit <strong>nicht</strong> persönlich in München abholen
 						</Typography>
 					</div>
 				</Grid>
-				<Grid item xs={12}>
-					<Collapse in={props.formValues.remote}>
-						<Grid container justitfy="center" spacing={2}>
 
-							<Grid item xs={12}>
-								<Divider/>
-							</Grid>
-
-							<Grid item xs={12}>
-								<CustomTextField
-									disabled={props.submitting}
-									label="Straße und Hausnummer"
-									fullWidth
-									value={props.formValues.street}
-									variant="outlined"
-									onChange={(newValue) => handleFormChange({street: newValue})}
-								/>
-							</Grid>
-							<Grid item xs={4}>
-								<CustomTextField
-									disabled={props.submitting}
-									label="Postleitzahl"
-									fullWidth
-									value={props.formValues.zip_code}
-									variant="outlined"
-									onChange={(newValue) => handleFormChange({zip_code: newValue})}
-								/>
-							</Grid>
-							<Grid item xs={8}>
-								<CustomTextField
-									disabled={props.submitting}
-									label="Ort"
-									fullWidth
-									value={props.formValues.city}
-									variant="outlined"
-									onChange={(newValue) => handleFormChange({city: newValue})}
-									onEnter={props.handleSubmit}
-								/>
-							</Grid>
-							<Grid item xs={12}>
-								<CustomTextField
-									disabled
-									label="Land (für sonstiges, kontaktiere uns)"
-									fullWidth
-									value={props.formValues.country}
-									variant="outlined"
-									onChange={(newValue) => handleFormChange({country: newValue})}
-								/>
-							</Grid>
-
-							<Grid item xs={12}>
-							</Grid>
-						</Grid>
-					</Collapse>
-				</Grid>
 				<Grid item xs={12}>
 					<div className={classes.flexBoxRow}>
-						<div className={classes.button}>
-							<Button
-								disabled={props.submitting}
-								variant="contained"
-								onClick={props.handleReset}
-								disableElevation>
-								Zurücksetzen
-							</Button>
-						</div>
 						<div className={classes.button}>
 							<Button
 								disabled={props.submitting}

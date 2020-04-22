@@ -95,6 +95,10 @@ const useStyles = makeStyles(theme => ({
 		maxHeight: "100%",
 		maxWidth: "100%",
 	},
+	divider3: {
+		marginTop: theme.spacing(3),
+		marginBottom: theme.spacing(3),
+	},
 }))
 
 export default useStyles;

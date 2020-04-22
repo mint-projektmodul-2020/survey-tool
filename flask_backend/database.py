@@ -6,7 +6,7 @@ from pymongo import DeleteMany, InsertOne
 
 def submit(form_dict):
 
-    all_keys = ['name', 'email', 'street', 'zip_code', 'city', 'country']
+    all_keys = ['name', 'email']
 
 
     if any([(key not in form_dict) for key in (all_keys + ['remote'])]):
@@ -29,15 +29,6 @@ def submit(form_dict):
     if (form_dict['email'][-9:] == '@mytum.de') and (len(form_dict['email']) == 9):
         return status('validation error: email format', status_code=400)
 
-
-
-    if form_dict['remote']:
-        if form_dict['country'] != 'Deutschland':
-            return status('validation error: country invalid', status_code=400)
-
-        if '' in (form_dict[key] for key in ('street', 'zip_code', 'city')):
-            return status('validation error: street/zip_code/city missing', status_code=400)
-
     if any([(("script" in form_dict[key]) or ("<" in form_dict[key]) or (">" in form_dict[key])) for key in all_keys]):
         return status('validation error: XSS alert', status_code=500)
 
@@ -47,10 +38,6 @@ def submit(form_dict):
         "name": form_dict["name"],
         "email": form_dict["email"],
         "remote": form_dict["remote"],
-        "street": form_dict["street"],
-        "zip_code": form_dict["zip_code"],
-        "city": form_dict["city"],
-        "country": form_dict["country"],
         "verification_token": verification_token
     }
 
