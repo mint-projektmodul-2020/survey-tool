@@ -26,9 +26,9 @@ else:
 # Connect to database and collections
 client = MongoClient(MONGODB_WRITE_CONNECTION_STRING)
 
-token_database = client.get_database('token_database')
-verified_collection = token_database['verified']
-pending_collection = token_database['pending']
+survey_1_database = client.get_database('survey_1_database')
+verified_entries_collection = survey_1_database['verified_entries']
+pending_entries_collection = survey_1_database['pending_entries']
 
 
 

@@ -6,6 +6,12 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import *
 
 
+def status(text, **kwargs):
+    status_dict = {'status': text}
+    status_dict.update(kwargs)
+    return status_dict
+
+
 def generate_random_key(length=32, numeric=False, existing_tokens=()):
     possible_characters = []
 
@@ -30,7 +36,7 @@ def generate_random_key(length=32, numeric=False, existing_tokens=()):
     return random_key
 
 
-def send_email(entry, verification_token):
+def send_email(entry):
 
     adress_data = ""
 
@@ -40,8 +46,8 @@ def send_email(entry, verification_token):
         adress_data = f'{entry["name"]}<br/>"Ich wohne nicht in München, sondern hier:<br/>"' +\
                       f'{entry["street"]}<br/>{entry["zip_code"]} {entry["city"]}<br/>{entry["country"]}'
 
-    verification_url = f"{BACKEND_URL}/backend/verify/{verification_token}"
-    change_url = f"{BACKEND_URL}/form"
+    verification_url = f'{BACKEND_URL}/backend/verify/{entry["verification_token"]}'
+    change_url = f'{BACKEND_URL}/form'
     message = Mail(
         from_email='mint-projektmodul-2020@tum.de',
         to_emails=entry["email"],
