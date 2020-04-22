@@ -37,10 +37,19 @@ function VerifyPage() {
 
 			<div className={classes.flexBoxRow}>
 				<Link to="/form">
-					<Button variant="contained" color="primary" disableElevation>
-						Zum Formular
-					</Button>
+					<div className={classes.button}>
+						<Button variant="contained" disableElevation>
+							Zum Formular
+						</Button>
+					</div>
 				</Link>
+				<a href="https://mail.tum.de/" target="_self">
+					<div className={classes.button}>
+						<Button variant="contained" color="primary" disableElevation>
+							mail.tum.de öffnen
+						</Button>
+					</div>
+				</a>
 			</div>
 		</React.Fragment>
 	);
