@@ -83,6 +83,18 @@ const useStyles = makeStyles(theme => ({
 	disabledText: {
 		color: "rgb(160, 160, 160)",
 	},
+	NotFoundDrawingBox: {
+		display: "flex",
+		alignItems: "center",
+		justifyContent: "center",
+		maxHeight: "300px",
+		maxWidth: "100%",
+		marginBottom: theme.spacing(6),
+	},
+	NotFoundDrawing: {
+		maxHeight: "100%",
+		maxWidth: "100%",
+	},
 }))
 
 export default useStyles;

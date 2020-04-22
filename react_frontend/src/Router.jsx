@@ -4,6 +4,7 @@ import IndexPage from "./Pages/IndexPage";
 import FormPage from "./Pages/FormPage";
 import VerifyPage from "./Pages/VerifyPage";
 import SuccessPage from "./Pages/SuccessPage";
+import NotFoundPage from "./Pages/NotFoundPage";
 import Container from "@material-ui/core/Container";
 import useStyles from "./styles";
 import MSELogo from './Components/assets/MSELogo.png';
@@ -53,6 +54,12 @@ function Router() {
 				<Route exact strict path="/success">
 					<Content>
 						<SuccessPage/>
+					</Content>
+				</Route>
+
+				<Route>
+					<Content>
+						<NotFoundPage/>
 					</Content>
 				</Route>
 			</Switch>
