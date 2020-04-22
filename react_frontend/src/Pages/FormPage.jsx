@@ -3,6 +3,7 @@ import Form from "../Components/Form";
 import Cookies from 'js-cookie';
 
 import axios from 'axios';
+import MessageSnackbar from "../Components/MessageSnackbar";
 
 
 function FormPage() {
@@ -21,9 +22,23 @@ function FormPage() {
 		}
 	})
 
-	const [formValues, setFormValues] = useState(initialState);
+	const [formValues, setFormValuesRaw] = useState(initialState);
+
+	function setFormValues(newValues) {
+		closeMessage();
+		setFormValuesRaw(newValues);
+	}
+
+	const [snackbar, setSnackbar] = useState({open: false, text: ""})
+	const [submitting, setSubmitting] = useState(false);
+
+	function closeMessage(){
+		setSnackbar({open: false, text: snackbar.text});
+	}
 
 	function submit() {
+		setSubmitting(true);
+		closeMessage();
 		console.log("Submit");
 
 		keys.forEach((key) => {
@@ -31,11 +46,18 @@ function FormPage() {
 		})
 
 		axios.post("http://localhost:5000/backend/submit", formValues)
-			.then((response) => {
+			.then(() => {
+				setSubmitting(false);
 				window.open("/verify", "_self");
 			})
-			.catch((response) => {
-				console.log(response);
+			.catch((error) => {
+				setTimeout(() => {
+					setSubmitting(false);
+					setSnackbar({
+						open: true,
+						text: JSON.parse(error.request.response).status
+					});
+				}, 800)
 			})
 	}
 
@@ -61,7 +83,18 @@ function FormPage() {
 
 	return (
 		<React.Fragment>
-			<Form formValues={formValues} setFormValues={setFormValues} handleSubmit={submit} handleReset={reset}/>
+			<Form
+				formValues={formValues}
+				setFormValues={setFormValues}
+				handleSubmit={submit}
+				handleReset={reset}
+				submitting={submitting}
+			/>
+			<MessageSnackbar
+				open={snackbar.open}
+				text={snackbar.text}
+				closeMessage={closeMessage}
+			/>
 		</React.Fragment>
 	);
 

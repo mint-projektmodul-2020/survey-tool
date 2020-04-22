@@ -50,7 +50,15 @@ const useStyles = makeStyles(theme => ({
 	button: {
 		marginLeft: theme.spacing(1),
 		marginRight: theme.spacing(1),
+		position: 'relative',
 	},
+	buttonProgress: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        marginTop: -12,
+        marginLeft: -12,
+    },
 	cornerLogoBox: {
 		position: "absolute",
 		top: 16,
@@ -61,6 +69,19 @@ const useStyles = makeStyles(theme => ({
 	cornerLogo: {
 		maxHeight: "100%",
 		zIndex: "1000",
+	},
+	snackbar: {
+        margin: theme.spacing(1),
+    },
+    snackbarContent: {
+        backgroundColor: theme.palette.primary.main,
+        color: "white",
+    },
+    snackbarIcon: {
+        fill: "white",
+    },
+	disabledText: {
+		color: "rgb(160, 160, 160)",
 	},
 }))
 

@@ -8,6 +8,7 @@ import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Cookies from "js-cookie";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 
 function Form(props) {
@@ -40,6 +41,7 @@ function Form(props) {
 			<Grid container justitfy="center" spacing={2}>
 				<Grid item xs={12}>
 					<CustomTextField
+						disabled={props.submitting}
 						label="Name"
 						fullWidth
 						value={props.formValues.name}
@@ -49,21 +51,25 @@ function Form(props) {
 				</Grid>
 				<Grid item xs={12}>
 					<CustomTextField
+						disabled={props.submitting}
 						label="Email"
 						fullWidth
 						value={props.formValues.email}
 						variant="outlined"
 						onChange={(newValue) => handleFormChange({email: newValue})}
+						onEnter={!props.formValues.remote ? props.handleSubmit : () => {
+						}}
 					/>
 				</Grid>
 				<Grid item xs={12}>
 					<div className={classes.flexBoxRow}>
 						<Checkbox
+							disabled={props.submitting}
 							checked={props.formValues.remote}
 							color="primary"
 							onChange={() => handleFormChange({remote: !props.formValues.remote})}
 						/>
-						<Typography variant="subtitle1">
+						<Typography variant="subtitle1" className={props.submitting ? classes.disabledText : ""}>
 							Ich lebe <strong>nicht</strong> in München
 						</Typography>
 					</div>
@@ -78,6 +84,7 @@ function Form(props) {
 
 							<Grid item xs={12}>
 								<CustomTextField
+									disabled={props.submitting}
 									label="Straße und Hausnummer"
 									fullWidth
 									value={props.formValues.street}
@@ -87,6 +94,7 @@ function Form(props) {
 							</Grid>
 							<Grid item xs={4}>
 								<CustomTextField
+									disabled={props.submitting}
 									label="Postleitzahl"
 									fullWidth
 									value={props.formValues.zip_code}
@@ -96,11 +104,13 @@ function Form(props) {
 							</Grid>
 							<Grid item xs={8}>
 								<CustomTextField
+									disabled={props.submitting}
 									label="Ort"
 									fullWidth
 									value={props.formValues.city}
 									variant="outlined"
 									onChange={(newValue) => handleFormChange({city: newValue})}
+									onEnter={props.handleSubmit}
 								/>
 							</Grid>
 							<Grid item xs={12}>
@@ -123,6 +133,7 @@ function Form(props) {
 					<div className={classes.flexBoxRow}>
 						<div className={classes.button}>
 							<Button
+								disabled={props.submitting}
 								variant="contained"
 								onClick={props.handleReset}
 								disableElevation>
@@ -131,12 +142,18 @@ function Form(props) {
 						</div>
 						<div className={classes.button}>
 							<Button
+								disabled={props.submitting}
 								variant="contained"
 								color="primary"
 								onClick={props.handleSubmit}
 								disableElevation>
 								Kit Reservieren
 							</Button>
+							{props.submitting && (
+								<CircularProgress size={24}
+								                  className={classes.buttonProgress}
+								                  color="primary"/>
+							)}
 						</div>
 					</div>
 				</Grid>

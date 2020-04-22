@@ -6,7 +6,10 @@ from pymongo import DeleteMany, InsertOne
 
 def submit(form_dict):
 
-    if any([(key not in form_dict) for key in ['name', 'email', 'remote', 'street', 'zip_code', 'city', 'country']]):
+    all_keys = ['name', 'email', 'street', 'zip_code', 'city', 'country']
+
+
+    if any([(key not in form_dict) for key in (all_keys + ['remote'])]):
         return status('server error: key missing', status_code=500)
 
     if '' in (form_dict[key] for key in ('name', 'email')):
@@ -15,13 +18,13 @@ def submit(form_dict):
 
 
     if (form_dict['email'][-7:] != '@tum.de') and (form_dict['email'][-9:] != '@mytum.de'):
-        return status('validation error: only "...@mytum.de" or "...@tum.de" email addresses allowed', status_code=400)
+        return status('validation error: email domain', status_code=400)
 
     if (form_dict['email'][-7:] == '@tum.de') and (len(form_dict['email']) == 7):
-        return status('validation error: email addresses invalid', status_code=400)
+        return status('validation error: email format', status_code=400)
 
     if (form_dict['email'][-9:] == '@mytum.de') and (len(form_dict['email']) == 9):
-        return status('validation error: email addresses invalid', status_code=400)
+        return status('validation error: email format', status_code=400)
 
 
 
@@ -32,6 +35,8 @@ def submit(form_dict):
         if '' in (form_dict[key] for key in ('street', 'zip_code', 'city')):
             return status('validation error: street/zip_code/city missing', status_code=400)
 
+    if any([(("script" in form_dict[key]) or ("<" in form_dict[key]) or (">" in form_dict[key])) for key in all_keys]):
+        return status('validation error: XSS alert', status_code=500)
 
 
     verification_token = generate_random_key()
