@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import Form from "../Components/Form";
-import Cookies from 'js-cookie';
 
 import axios from 'axios';
 import MessageSnackbar from "../Components/MessageSnackbar";
@@ -17,16 +16,9 @@ function FormPage(props) {
 
 	keys.forEach((key) => {
 		if (key in pathParams) {
-			let value = (key !== "remote") ? pathParams[key].replace("+", " ") : (pathParams[key] === "true")
-			Cookies.set("form-" + key, value, {expires: 1});
-			initialState[key] = value;
+			initialState[key] = (key !== "remote") ? pathParams[key].replace("+", " ") : (pathParams[key] === "true");
 		} else {
-			let cookieValue = Cookies.get("form-" + key);
-			if (cookieValue === undefined) {
-				initialState[key] = (key !== "remote") ? "" : false;
-			} else {
-				initialState[key] = (key !== "remote") ? cookieValue : (cookieValue === "true");
-			}
+			initialState[key] = (key !== "remote") ? "" : false;
 		}
 	})
 
@@ -59,10 +51,6 @@ function FormPage(props) {
 		closeMessage();
 		console.log("Submit");
 
-		keys.forEach((key) => {
-			Cookies.set('form-' + key, formValues[key], {expires: 1});
-		})
-
 		axios.post("/backend/submit", formValues)
 			.then(() => {
 				props.history.push('/verify' + getPathParams());
@@ -83,9 +71,7 @@ function FormPage(props) {
 	function reset() {
 		console.log("Reset");
 
-		keys.forEach((key) => {
-			Cookies.remove('form-' + key);
-		})
+		props.history.push('/form');
 
 		setFormValues({
 			name: "",

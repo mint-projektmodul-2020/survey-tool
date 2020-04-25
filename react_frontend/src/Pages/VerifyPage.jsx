@@ -3,7 +3,6 @@ import useStyles from "../styles";
 import Typography from "@material-ui/core/Typography";
 import {Link} from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import Cookies from 'js-cookie';
 import queryString from "query-string";
 
 function VerifyPage() {
@@ -14,8 +13,6 @@ function VerifyPage() {
 	const pathParams = queryString.parse(window.location.search);
 	if ("email" in pathParams) {
 		verifyEmail = pathParams["email"];
-	} else {
-		verifyEmail = Cookies.get('form-email');
 	}
 
 	return (
