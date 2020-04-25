@@ -43,7 +43,7 @@ function VerifyPage() {
 			</div>
 
 			<div className={classes.flexBoxRow}>
-				<Link to="/form">
+				<Link to={"/form" + window.location.search}>
 					<div className={classes.button}>
 						<Button variant="contained" disableElevation>
 							Zum Formular

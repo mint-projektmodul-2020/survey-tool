@@ -37,6 +37,16 @@ function FormPage(props) {
 		setFormValuesRaw(newValues);
 	}
 
+	function getPathParams() {
+		let pathParams = "?";
+
+		keys.forEach((key) => {
+			pathParams += key + "=" + formValues[key] + "&";
+		})
+
+		return pathParams.substring(0, pathParams.length - 1);
+	}
+
 	const [snackbar, setSnackbar] = useState({open: false, text: ""})
 	const [submitting, setSubmitting] = useState(false);
 
@@ -55,12 +65,13 @@ function FormPage(props) {
 
 		axios.post("/backend/submit", formValues)
 			.then(() => {
-				props.history.push('/verify?email=' + formValues["email"]);
+				props.history.push('/verify' + getPathParams());
 				setSubmitting(false);
 			})
 			.catch((error) => {
 				setTimeout(() => {
 					setSubmitting(false);
+					props.history.push('/form' + getPathParams());
 					setSnackbar({
 						open: true,
 						text: JSON.parse(error.request.response).status
