@@ -4,12 +4,19 @@ import Typography from "@material-ui/core/Typography";
 import {Link} from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Cookies from 'js-cookie';
+import queryString from "query-string";
 
 function VerifyPage() {
 
 	const classes = useStyles();
 
-	const cookieEmail =  Cookies.get('form-email');
+	let verifyEmail;
+	const pathParams = queryString.parse(window.location.search);
+	if ("email" in pathParams) {
+		verifyEmail = pathParams["email"];
+	} else {
+		verifyEmail = Cookies.get('form-email');
+	}
 
 	return (
 		<React.Fragment>
@@ -21,15 +28,15 @@ function VerifyPage() {
 
 			<div className={classes.textBox3}>
 				<Typography variant="subtitle1">
-					{([undefined, ""].includes(cookieEmail)) && (
+					{([undefined, ""].includes(verifyEmail)) && (
 						<React.Fragment>
 							Email Adresse nochmal ändern?
 						</React.Fragment>
 					)}
 
-					{(![undefined, ""].includes(cookieEmail)) && (
+					{(![undefined, ""].includes(verifyEmail)) && (
 						<React.Fragment>
-							<strong>{cookieEmail}</strong> ist nicht deine Email Adresse?
+							<strong>{verifyEmail}</strong> ist nicht deine Email Adresse?
 						</React.Fragment>
 					)}
 				</Typography>

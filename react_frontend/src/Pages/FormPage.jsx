@@ -11,13 +11,13 @@ import {withRouter} from 'react-router-dom'
 
 function FormPage(props) {
 
-	const values = queryString.parse(window.location.search);
+	const pathParams = queryString.parse(window.location.search);
 	let initialState = {};
 	const keys = ["name", "email", "remote"];
 
 	keys.forEach((key) => {
-		if (key in values) {
-			let value = (key !== "remote") ? values[key].replace("+", " ") : (values[key] === "true")
+		if (key in pathParams) {
+			let value = (key !== "remote") ? pathParams[key].replace("+", " ") : (pathParams[key] === "true")
 			Cookies.set("form-" + key, value, {expires: 1});
 			initialState[key] = value;
 		} else {
@@ -55,7 +55,7 @@ function FormPage(props) {
 
 		axios.post("/backend/submit", formValues)
 			.then(() => {
-				props.history.push('/verify');
+				props.history.push('/verify?email=' + formValues["email"]);
 				setSubmitting(false);
 			})
 			.catch((error) => {
